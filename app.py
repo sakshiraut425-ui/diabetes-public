@@ -351,7 +351,7 @@ from sklearn.tree import DecisionTreeClassifier
 kfold = KFold(n_splits=10, random_state=seed,shuffle=True)
 cart = DecisionTreeClassifier()
 num_trees = 100
-model = BaggingClassifier(base_estimator=cart, n_estimators=num_trees)
+model = BaggingClassifier(estimator=cart, n_estimators=num_trees)
 results = cross_val_score(model, X, Y, cv=kfold)
 print(results.mean())
 
@@ -527,4 +527,3 @@ dump(model, open('filename', 'wb'))
 loaded_model = load(open('filename', 'rb'))
 result = loaded_model.score(X_test, Y_test)
 print(result)
-
